@@ -7,6 +7,7 @@ import java.io.StringWriter;
 import java.nio.file.FileVisitResult;
 import java.nio.file.FileVisitor;
 import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.attribute.BasicFileAttributes;
@@ -26,6 +27,7 @@ import net.jackofalltrades.idea.PluginDescriptorFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -88,8 +90,18 @@ public class IdeaPluginController {
         Files.copy(pluginsDirectory.resolve(filePath), response.getOutputStream());
     }
 
+    /**
+     * Executed by Spring when the NoSuchFileException is thrown so the paths to the non-existent file is not returned to the user.
+     *
+     * @param response The response to client so we can set the appropriate status.
+     */
+    @ExceptionHandler({NoSuchFileException.class})
+    void fileNotFound(HttpServletResponse response) {
+        response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+    }
+
     @ResponseStatus(value = HttpStatus.NO_CONTENT, reason = "No plugin list")
-    public static class PluginListGenerationFailed extends RuntimeException {
+    static class PluginListGenerationFailed extends RuntimeException {
 
         public PluginListGenerationFailed(Throwable cause) {
             super(cause);

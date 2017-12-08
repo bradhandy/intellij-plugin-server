@@ -13,7 +13,7 @@
             </description>
             <version>${pluginDescriptor.version}</version>
             <idea-version min="n/a" max="n/a" since-build="${pluginDescriptor.earliestSupportedBuildNumber}" until-build="${pluginDescriptor.latestSupportedBuildNumber}"/>
-            <download-url>http://localhost:8080/plugins/download/${pluginDescriptor.sourceArchive}</download-url>
+            <download-url>${pluginServer}/plugins/download/${pluginDescriptor.sourceArchive}</download-url>
             <vendor email="${pluginDescriptor.vendorEmail}" url="${pluginDescriptor.vendorUrl}">${pluginDescriptor.vendorName}</vendor>
             <change-notes>
                 <![CDATA[

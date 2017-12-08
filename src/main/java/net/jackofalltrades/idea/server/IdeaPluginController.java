@@ -42,12 +42,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class IdeaPluginController {
 
     private final Path pluginsDirectory;
-    private final String pluginsCategory;
     private final Configuration freemarkerConfiguration;
 
-    public IdeaPluginController(@Value("${plugins.dir}") String pluginsDirectory, @Value("${plugins.category}") String pluginsCategory, Configuration freemarkerConfiguration) {
+    public IdeaPluginController(@Value("${plugins.dir}") String pluginsDirectory, Configuration freemarkerConfiguration) {
         this.pluginsDirectory = Paths.get(pluginsDirectory);
-        this.pluginsCategory = pluginsCategory;
         this.freemarkerConfiguration = freemarkerConfiguration;
     }
 
@@ -59,7 +57,7 @@ public class IdeaPluginController {
         try {
             Files.walkFileTree(pluginsDirectory, new PluginFileVisitor(pluginDescriptorMap, buildVersion));
             Template template = freemarkerConfiguration.getTemplate("plugin-list.xml.ftl");
-            Map<String, Object> dataModel = ImmutableMap.of("pluginDescriptors", pluginDescriptorMap.values(), "pluginsCategory", pluginsCategory);
+            Map<String, Object> dataModel = ImmutableMap.of("pluginDescriptors", pluginDescriptorMap.values());
 
             StringWriter output = new StringWriter();
             template.process(dataModel, output);

@@ -1,0 +1,19 @@
+----------------------------------------------------------------
+Mon Mar 27 15:17:28 EDT 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.13.1.1 - (1765088): instance a816c00e-015b-1133-a0e9-00000d8041b8 
+on database directory /Users/bhandy/projects/plugin-server/build/databases/derby with class loader sun.misc.Launcher$AppClassLoader@18b4aac2 
+Loaded from file:/Users/bhandy/.gradle/caches/modules-2/files-2.1/org.apache.derby/derby/10.13.1.1/29c42babe5c5463c6eea45487d3cfbfe8348ccd1/derby-10.13.1.1.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_112-b16
+user.dir=/Users/bhandy/projects/plugin-server
+os.name=Mac OS X
+os.arch=x86_64
+os.version=10.12.3
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Mon Mar 27 15:17:33 EDT 2017: Shutting down Derby engine
+----------------------------------------------------------------
+Mon Mar 27 15:17:33 EDT 2017:
+Shutting down instance a816c00e-015b-1133-a0e9-00000d8041b8 on database directory /Users/bhandy/projects/plugin-server/build/databases/derby with class loader sun.misc.Launcher$AppClassLoader@18b4aac2 
+----------------------------------------------------------------

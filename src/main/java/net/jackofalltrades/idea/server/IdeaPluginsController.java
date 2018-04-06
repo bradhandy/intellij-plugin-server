@@ -39,12 +39,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/plugins")
 @ConfigurationProperties
-public class IdeaPluginController {
+public class IdeaPluginsController {
 
     private final Path pluginsDirectory;
     private final Configuration freemarkerConfiguration;
 
-    public IdeaPluginController(@Value("${plugins.dir}") String pluginsDirectory, Configuration freemarkerConfiguration) {
+    public IdeaPluginsController(@Value("${plugins.dir}") String pluginsDirectory, Configuration freemarkerConfiguration) {
         this.pluginsDirectory = Paths.get(pluginsDirectory);
         this.freemarkerConfiguration = freemarkerConfiguration;
     }
